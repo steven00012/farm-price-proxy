@@ -1,14 +1,15 @@
 import requests
 import json
 
-# 正確資料來源（農業部同步到 GitHub 的副本）
-url = "https://raw.githubusercontent.com/hirocaster/farm-price-proxy/main/source.json"
+# 政府 API 透過 Cloudflare Worker 中繼代理
+url = "https://veg-price.kai0932516360.workers.dev/"
+
 resp = requests.get(url)
 
 try:
     data = resp.json()
 except Exception:
-    print("❌ 抓到的不是 JSON，請確認網址是否正確")
+    print("❌ 抓到的不是 JSON，請確認 Worker 是否啟用")
     print(resp.text)
     exit(1)
 
