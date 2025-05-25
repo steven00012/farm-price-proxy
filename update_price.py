@@ -1,8 +1,8 @@
 import requests
 import json
 
-# 使用 GitHub Raw 來源，最穩定
-url = "https://raw.githubusercontent.com/steven00012/farm-price-proxy/main/farm-price.json"
+# 正確資料來源（農業部同步到 GitHub 的副本）
+url = "https://raw.githubusercontent.com/hirocaster/farm-price-proxy/main/source.json"
 resp = requests.get(url)
 
 try:
