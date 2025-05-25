@@ -2,7 +2,8 @@ import requests
 import json
 
 # ✅ 政府 API（改由 GitHub Actions 來抓，避開 Cloudflare 限制）
-url = "https://data.coa.gov.tw/Service/OpenData/FromM/FarmTransData.aspx"
+url = "https://raw.githubusercontent.com/openjson-tw/farm-price-daily/main/farm-price.json"
+
 resp = requests.get(url)
 data = resp.json()
 
