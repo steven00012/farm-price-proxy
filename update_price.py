@@ -1,8 +1,8 @@
 import requests
 import json
 
-# 正確來源（我代管的每日同步菜價 JSON）
-url = "https://farm-price.pages.dev/data.json"
+# 使用 GitHub Raw 來源，最穩定
+url = "https://raw.githubusercontent.com/hirocaster/farm-price-proxy/main/source.json"
 resp = requests.get(url)
 
 try:
