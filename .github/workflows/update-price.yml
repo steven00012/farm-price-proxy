@@ -1,0 +1,33 @@
+name: Update Farm Price Daily
+
+on:
+  schedule:
+    - cron: '0 21 * * *'  # 每天台灣時間早上 5 點（UTC+8 → UTC-8）
+  workflow_dispatch:      # 也可手動執行
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Fetch and update farm prices
+        run: |
+          python update_price.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add farm-price.json
+          git commit -m "每日自動更新農產品價格" || echo "No changes to commit"
+          git push
