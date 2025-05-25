@@ -2,7 +2,7 @@ import requests
 import json
 
 # 抓取政府公開 API 資料
-url = "https://data.coa.gov.tw/Service/OpenData/FromM/FarmTransData.aspx"
+url = "https://raw.githubusercontent.com/hirocaster/farm-price-proxy/main/source.json"
 resp = requests.get(url)
 data = resp.json()
 
